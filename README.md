@@ -17,7 +17,10 @@ paired t-test 및 Bonferroni correction을 수행했습니다.
 ├─ lat_gastro_public.csv
 ├─ lat_gastro_analysis.ipynb
 ├─ analysis_pipeline.py
-└─ README.md
+├─ requirements.txt
+├─ README.md
+├─ .gitignore
+└─ .gitattributes
 ```
 
 ## Files
@@ -38,7 +41,27 @@ paired t-test 및 Bonferroni correction을 수행했습니다.
   - 동일한 데이터 구조를 가진 다른 변수에도 재사용 가능
 
 - `lat_gastro_public.csv`
-  - 본 분석에 사용한 LAT. GASTRO %MVC 데이터
+  - 공개용으로 익명화한 LAT. GASTRO %MVC 분석 데이터
+  - 분석에 필요한 최소 컬럼만 포함
+
+- `requirements.txt`
+  - 분석 실행에 필요한 Python 패키지 목록
+
+  ## Dataset
+
+공개용 데이터셋은 318개의 trial과 23명의 피험자로 구성되어 있습니다.
+
+Repeated Measures ANOVA에서는 세 조건(83cm, 93cm, 103cm)의
+조건 평균이 모두 존재하는 피험자만 complete-case로 포함하였으며,
+최종 분석에는 22명의 피험자가 사용되었습니다.
+
+공개 CSV는 분석에 필요한 최소 정보만 포함합니다.
+
+- `subject`: 익명화된 피험자 ID (`S001` ~ `S023`)
+- `group`: 연령 집단 (`older`, `young`)
+- `condition`: 손잡이 높이 조건 (`83cm`, `93cm`, `103cm`)
+- `repeat`: 조건별 반복 trial 번호
+- `lat_gastro_percent_mvc`: LAT. GASTRO 근활성도 (%MVC)
 
 ## Analysis Workflow
 
@@ -90,18 +113,9 @@ Repeated Measures ANOVA 결과,
 ```bash
 pip install -r requirements.txt
 
+
 ## Reproducibility
 
-분석은 Jupyter Notebook에서 위에서 아래 순서대로 실행되도록 구성하였다.
-
-분석 대상 변수는 Notebook 상단에서 다음과 같이 지정한다.
-
-```python
-value_col = "lat_gastro_percent_mvc"
-```
-
-`analysis_pipeline.py`의 함수들은 `value_col`을 입력받도록 구성하여,
-동일한 데이터 구조를 가진 다른 분석 변수에도 재사용할 수 있도록 하였다.
-
-분석 재현 시 Notebook 커널을 재시작한 뒤
-`Run All`을 실행하면 동일한 분석 흐름을 재현할 수 있다.
+분석 대상 변수는 Notebook 상단의 `value_col`에서 지정하며,
+동일한 데이터 구조를 가진 다른 분석 변수에도
+`analysis_pipeline.py`의 함수를 재사용할 수 있도록 구성하였다.
