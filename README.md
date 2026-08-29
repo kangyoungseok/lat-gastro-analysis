@@ -55,7 +55,7 @@ Repeated Measures ANOVA에서는 세 조건(83cm, 93cm, 103cm)의
 조건 평균이 모두 존재하는 피험자만 complete-case로 포함하였으며,
 최종 분석에는 22명의 피험자가 사용되었습니다.
 
-공개 CSV는 분석에 필요한 최소 정보만 포함합니다.
+공개 CSV는 분석에 필요한 핵심 변수와 연구 맥락을 위한 최소 메타데이터만 포함되어있습니다.
 
 - `subject`: 익명화된 피험자 ID (`S001` ~ `S023`)
 - `group`: 연령 집단 (`older`, `young`)
@@ -112,7 +112,7 @@ Repeated Measures ANOVA 결과,
 
 ```bash
 pip install -r requirements.txt
-
+```
 
 ## Reproducibility
 
