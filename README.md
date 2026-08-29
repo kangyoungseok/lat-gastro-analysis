@@ -83,6 +83,13 @@ Repeated Measures ANOVA 결과,
 - statsmodels
 - Jupyter Notebook
 
+## Installation
+
+필요한 Python 패키지는 다음 명령으로 설치할 수 있습니다.
+
+```bash
+pip install -r requirements.txt
+
 ## Reproducibility
 
 분석은 Jupyter Notebook에서 위에서 아래 순서대로 실행되도록 구성하였다.
